@@ -30,4 +30,4 @@ for line in unsafe_lines:
     alterations = [line[:i] + line[i+1:] for i in range(len(line))]
     sf, _ = check_safe(alterations)
     safe_reports += bool(sf)
-print(f"p2: {safe_reports}")
+print(f"p2: {safe_reports}")lines = open("input.txt").read().splitlines()

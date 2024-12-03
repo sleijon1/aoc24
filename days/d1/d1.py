@@ -5,4 +5,4 @@ left = sorted(left)
 right = sorted(right)
 differences = [abs(x-y) for x,y in zip(left, right)]
 counter = Counter(right)
-print(f"part 1 {sum(differences)}, part 2 {sum([val*counter[val] for val in left])}")
+print(f"part 1 {sum(differences)}, part 2 {sum([val*counter[val] for val in left])}")lines = open("input.txt").read().splitlines()
