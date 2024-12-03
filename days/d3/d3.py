@@ -11,6 +11,6 @@ for i, match in enumerate(matches):
         dont = False
     elif dont:
         remove.append(i)
-p1 = sum([math.prod(map(int, match[4:-1].split(","))) for i, match in enumerate(matches) if "do" not in match])
+p1 = sum([math.prod(map(int, match[4:-1].split(","))) for match in matches if "do" not in match])
 p2 = sum([math.prod(map(int, match[4:-1].split(","))) for i, match in enumerate(matches) if i not in remove and "do" not in match])
 print(f"Part 1: {p1}\nPart 2: {p2}")
