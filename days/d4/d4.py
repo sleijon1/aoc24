@@ -5,12 +5,10 @@ lines = open("input.txt").read().splitlines()
 def get_searches(strings):
     grid = np.array([list(row) for row in strings])
     horizontal = ["".join(row) for row in grid]
-    vertical = ["".join(col) for col in grid.T] 
+    vertical = ["".join(col) for col in grid.T]
     diagonals_tl_br = ["".join(np.diag(grid, k)) for k in range(-grid.shape[0] + 1, grid.shape[1])]
-    
     flipped_grid = np.fliplr(grid)
     diagonals_tr_bl = ["".join(np.diag(flipped_grid, k)) for k in range(-flipped_grid.shape[0] + 1, flipped_grid.shape[1])]
-    
     return [horizontal, vertical, diagonals_tl_br, diagonals_tr_bl]
 
 xmas = 0
