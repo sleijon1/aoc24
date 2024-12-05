@@ -1,4 +1,5 @@
 from collections import defaultdict
+from colored import Fore, Style
 order, orders = open("input.txt").read().split("\n\n")
 order = order.split("\n")
 orders = orders.split("\n")
@@ -17,13 +18,14 @@ for order in orders:
 p2 = 0
 
 for nums in wrong_order:
-    print("Sorting", nums)
+    print("\nSorting", ','.join(map(str, nums)))
     while not all(nums[i+1] in behind_page[nums[i]] for i in range(len(nums)-1)):
         for i in range(len(nums)-1):
             for j in range(i+1, len(nums)):
                 if nums[i] in behind_page[nums[j]]:
                     print(f"Swapping {nums[i]} and {nums[j]}")
                     nums.insert(j, nums.pop(i))
+                    print(f"New order: {','.join(map(str, nums[:j]))},{Fore.red}{nums[j]}{Style.reset}{',' if nums[j+1:] else ''}{','.join(map(str, nums[j+1:]))}")
     p2 += nums[len(nums)//2]
 
-print(f"Part 1: {p1}, part 2: {p2}")
+print(f"\n{Fore.green}Part 1: {p1}, part 2: {p2}")
