@@ -1,14 +1,7 @@
 import copy
 from collections import defaultdict
 lines = open("input.txt").read().splitlines()
-
-trailheads = []
-for y in range(len(lines)):
-    for x in range(len(lines[y])):
-        if lines[y][x] == "0":
-            trailheads.append([(x, y)])
-
-
+trailheads = [[(x, y)] for y in range(len(lines)) for x in range(len(lines[y])) if lines[y][x] == "0"]
 trailhead_nines, distinct_trails = defaultdict(set), 0
 while trailheads:
     trail = trailheads.pop()
@@ -20,7 +13,8 @@ while trailheads:
         new_trail = copy.copy(trail)
         cur_x, cur_y = trail[-1]
         new_x, new_y = cur_x + dx, cur_y + dy
-        if new_y >= len(lines) or new_y < 0 or new_x >= len(lines[0]) or new_x < 0 or lines[new_y][new_x] == '.':
+        out_of_bounds = new_y >= len(lines) or new_y < 0 or new_x >= len(lines[0]) or new_x < 0
+        if out_of_bounds or lines[new_y][new_x] == '.':
             continue
         if int(lines[new_y][new_x]) == int(lines[cur_y][cur_x]) + 1:
             new_trail.append((new_x, new_y))
@@ -28,3 +22,4 @@ while trailheads:
 
 
 print(f"p1 {sum([len(v) for k, v in trailhead_nines.items()])}, p2 {distinct_trails}")
+ 

@@ -7,6 +7,8 @@
 - [ ] make 7 faster
 - [ ] clean day 8
 - [ ] combine 9a 9b into one solution
+- [ ] make recursive version of d10
+
 ## Notes
 
 - Day 6 funny meme ![pokemen_meme](imgs/image.png)
