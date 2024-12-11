@@ -55,7 +55,7 @@ iterations saved with caching for ('20', 6) -> 46458
 iterations saved with caching for ('20', 11) -> 488110
 ```
 
-Clearly we are saving a bunch of iterations and there are a total of approximatley 5 million cache entries. 
+Clearly we are saving a bunch of iterations and there are a total of approximately 5 million cache entries. 
 
 But the simplest evidence I suppose is the fact that if you add a call counter for running
 
