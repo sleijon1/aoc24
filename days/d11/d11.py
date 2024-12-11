@@ -15,5 +15,4 @@ def transform_stone(stone, blinks):
     else:
         return transform_stone(str(int(stone) * 2024), blinks-1)
 
-
 print(f"part 1: {sum([transform_stone(stone, 25) + 1 for stone in arrangement])}, part 2: {sum([transform_stone(stone, 75) + 1 for stone in arrangement])}")
