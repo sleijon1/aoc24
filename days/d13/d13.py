@@ -1,5 +1,7 @@
 import re
 import math
+from sympy import symbols, Eq, solve
+
 _input = open("input.txt").read().split("\n\n")
 games = []
 for section in _input:
@@ -8,29 +10,27 @@ for section in _input:
 
 
 
+def solve_two_linear_equations(coefficients, constants):
+    x, y = symbols('x y')
+    a, b = coefficients[0]
+    d, e = coefficients[1]
+    c, f = constants
+    eq1 = Eq(a * x + b * y, c)
+    eq2 = Eq(d * x + e * y, f)
+    solution = solve((eq1, eq2), (x, y))
 
-def calculate_tokens(A, B, price):
-    #rice = (price[0] + 10000000000000, price[1] + 10000000000000)
-    max_A_x, max_A_y = math.ceil(price[0] / A[0]), math.ceil(price[1] / A[1])
-    max_B_x, max_B_y = math.ceil(price[0] / B[0]), math.ceil(price[1] / B[1])
-    max_hits_A = min(max_A_x, max_A_y)
-    max_hits_B = min(max_B_x, max_B_y)
-    
-    tokens = math.inf
-    for hits_A in range(1, max_hits_A):
-        for hits_B in range(1, max_hits_B):
-            x, y = hits_A * A[0] + hits_B * B[0], hits_A * A[1] + hits_B * B[1]
-            if price[0] % x == 0 and price[1] % y == 0:
-                tokens = min(tokens, (price[0]/x)*(hits_A*3) + (price[1]/y)*(hits_B))
-    if tokens != math.inf:
-        return tokens
+    if solution:
+        return solution[x], solution[y]
 
-min_tokens = []
-for game in games:
-    A, B, price = game
-    tokens = calculate_tokens(A, B, price)
-    if tokens:
-        min_tokens.append(tokens)
-    #rint(len(min_tokens))
+def calculate_price(b=False):
+    tokens = 0
+    for game in games:
+        A, B, price = game
+        if b:
+            price = (price[0] + 10000000000000, price[1] + 10000000000000)
+        num_A, num_B = solve_two_linear_equations([(A[0], B[0]), (A[1], B[1])], [price[0], price[1]])
+        if num_A.is_integer and num_B.is_integer:
+            tokens += num_A * 3 + num_B
+    return tokens
 
-print(sum(min_tokens))
+print(f"Part 1: {calculate_price()}", f"Part 2: {calculate_price(True)}", sep="\n")
