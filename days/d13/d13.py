@@ -1,5 +1,4 @@
 import re
-import math
 from sympy import symbols, Eq, solve
 
 _input = open("input.txt").read().split("\n\n")
