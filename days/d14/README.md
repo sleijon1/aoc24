@@ -4,4 +4,4 @@ Part 1 is a straightforward simple solution but part b was interesting since it 
 
 [christmas_tree](christmas_tree.png)
 
-But since you don't know it will be so obvious beforehand I scrutinized the images thoroughly to look for a resemblance of the tree.
+But since you don't know it will be so obvious beforehand I scrutinized the images thoroughly to look for a resemblance of the tree. But most likely it will always be very obvious since I doubt they would make a problem where some difficulty lies in visual inspection, but that is of course an assumption.
