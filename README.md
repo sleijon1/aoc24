@@ -9,4 +9,4 @@
 - [ ] combine 9a 9b into one solution
 - [ ] make recursive version of d10
 - [ ] clean up d12 and look for alternative solution with less code
-- [ ] look for efficient way to scan images (from matrices) visually and potentially golf d14
+- [ ] look for efficient way to scan images (from matrices) either in terminal or better file explorer than windows and potentially golf d14
