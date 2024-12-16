@@ -10,3 +10,4 @@
 - [ ] make recursive version of d10
 - [ ] clean up d12 and look for alternative solution with less code
 - [ ] look for efficient way to scan images (from matrices) either in terminal or better file explorer than windows and potentially golf d14
+- [ ] clean up 15 and combine solutions
