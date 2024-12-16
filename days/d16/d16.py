@@ -1,19 +1,12 @@
 lines = list(map(list, open("input.txt").read().splitlines()))
 
-rotation_cost = {
-        ((0, 1), (1, 0)): 1000,
-        ((1, 0), (0, 1)): 1000,
-        ((0, -1), (1, 0)): 1000,
-        ((1, 0), (0, -1)): 1000,
-        ((0, 1), (-1, 0)): 1000,
-        ((-1, 0), (0, 1)): 1000,
-        ((0, -1), (-1, 0)): 1000,
-        ((-1, 0), (0, -1)): 1000,
-        ((0, -1), (0, 1)): 2000,
-        ((0, 1), (0, -1)): 2000,
-        ((1, 0), (-1, 0)): 2000,
-        ((-1, 0), (1, 0)): 2000,
-}
+def rotation_cost(v1, v2):
+    if v1 == tuple(-x for x in v2): # Opposite direction
+        return 2000
+    elif sum(a * b for a, b in zip(v1, v2)) == 0: # Perpendicular directions
+        return 1000
+    else:
+        return 0
 
 def parse_start():
     for i in range(len(lines)):
@@ -40,8 +33,7 @@ def bfs(_map, start, rotation_cost):
             if (nx, ny) in path:
                 continue
             if 0 <= nx < len(_map[0]) and 0 <= ny < len(_map[0]) and _map[ny][nx] in 'E.':
-                r_cost = rotation_cost[(prev_direction, (dx, dy))] if prev_direction and prev_direction != (dx, dy) else 0
-                q.append((nx, ny, (dx, dy), steps + 1 + r_cost, path + [(nx, ny)]))
+                q.append((nx, ny, (dx, dy), steps + 1 + rotation_cost(prev_direction, (dx, dy)), path + [(nx, ny)]))
                 
     return finished
 
